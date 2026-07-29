@@ -10,6 +10,8 @@ import {
   envioSomNotificacao
 } from '@/services/notifications'
 
+import { vibracaoSimples } from '@/services/vibration'
+
 export default function App() {
   async function fnExecutar(acao: () => Promise<void>) {
     const granted = await requestPermissaoNotificacao()
@@ -29,7 +31,7 @@ export default function App() {
       <Button title="Apos 5 segundos" onPress={() => fnExecutar(envioDelayNotificacao)} />
       <Button title="Notificação com Som" onPress={() => fnExecutar(envioSomNotificacao)} />
       <Button title="Cancelar Notificações" onPress={() => fnExecutar(cancelarTodasNotificacoes)} />
-      <Button title="Quinto button" />
+      <Button title="Vibração Simples" onPress={vibracaoSimples} />
     </View>
   )
 }
